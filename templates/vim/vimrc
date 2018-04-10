@@ -1,0 +1,99 @@
+filetype plugin indent on
+syntax on
+
+"" Condensed vimrc for exams
+"syntax on
+"set ai ts=4 sw=4 et nowrap number relativenumber hlsearch incsearch
+"color darkblue
+
+set encoding=utf-8
+set ffs=unix,dos,mac
+
+set nowrap
+
+set shiftwidth=4
+set tabstop=4
+set expandtab
+
+set autoindent
+
+set hlsearch
+set incsearch
+
+colorscheme molokai
+set t_Co=256
+
+" Disable Background color erase
+if &term =~ '256color'
+	set t_ut=
+endif
+
+set history=1000
+set number
+set relativenumber
+set colorcolumn=81
+
+set foldcolumn=1
+
+set ruler
+set magic
+
+nnoremap j gj
+nnoremap k gk
+
+
+" Shortcuts for accessing the clipboard
+let mapleader=","
+let g:mapleader=","
+
+vmap <leader>y "+y
+nmap <leader>p "+p
+vmap <leader>p "+p
+
+
+" Macros
+nnoremap <Space> @q
+vnoremap <Space> :normal @q<CR>
+
+imap jj <Esc>
+
+
+" Filetype defaults
+autocmd BufRead,BufNewFile *.xmobarrc set filetype=haskell
+autocmd bufread,bufnewfile *.core set ft=haskell
+autocmd bufread,bufnewfile .xinitrc set ft=sh
+autocmd BufRead,BufNewFile *.x set ft=alex
+autocmd BufRead,BufNewFile *sxhkdrc set noexpandtab
+autocmd BufRead,BufNewFile *.yml setlocal ts=2 sw=2
+
+highlight ExtraWhitespace ctermbg=001
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t$/
+autocmd BufWinLeave * call clearmatches()
+
+let Tex_FoldedSections=""
+let Tex_FoldedEnvironments=""
+let Tex_FoldedMisc=""
+
+let g:go_fmt_command = "goimports"
+
+map <Leader>n :NERDTreeToggle<CR>
+
+"Use TAB to complete when typing words, else inserts TABs as usual.
+"Uses dictionary and source files to find matching words to complete.
+
+"See help completion for source,
+"Note: usual completion is on <C-n> but more trouble to press all the time.
+"Never type the same word twice and maybe learn a new spellings!
+"Use the Linux dictionary when spelling is in doubt.
+"Window users can copy the file to their machine.
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+set dictionary="/usr/share/dict/british"
+
+"execute pathogen#infect()

@@ -1,0 +1,22 @@
+---
+################################################################################
+# Packages/Repositories needed for a minimal (e.g. non-X) setup
+################################################################################
+base_packages:
+  - ansible
+  - git
+  - gpg
+  - htop
+  - ssh
+  - sudo
+  - tmux
+  - vim
+  - wpasupplicant
+  - zsh
+
+# Expects repositories as dict { repo, key } where repo refers to the
+# apt repository and key indicates the signing key for the packages
+base_repositories:       []
+
+# Set the user's group to his private group
+base_group: "{{ base_user }}"

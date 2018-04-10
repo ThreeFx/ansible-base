@@ -1,0 +1,65 @@
+---
+  - name: Add base signing keys
+    become: True
+    apt_key:
+      file: "keys/{{ item.key }}"
+      state: present
+    with_items: "{{ base_repositories }}"
+
+  - name: Add base repositories
+    become: True
+    apt_repository:
+      repo: "{{ item.repo }}"
+      state: present
+    with_items: "{{ base_repositories }}"
+
+  - name: Update packages and install base packages
+    become: True
+    apt:
+      pkg: "{{ item }}"
+      state: present
+      update_cache: yes
+    with_items: "{{ base_packages }}"
+
+  - name: "Create the user '{{ base_user }}'"
+    become: True
+    user:
+      name: "{{ base_user }}"
+      createhome: yes
+      append: yes
+      groups:
+        - wheel
+      shell: "{{ base_user_shell }}"
+      generate_ssh_key: yes
+      ssh_key_bits: "{{ user_ssh_key_bits }}"
+
+  - name: Add the user to the sudoers file
+    remote_user: root
+    lineinfile:
+      path: /etc/sudoers
+      line: "{{ base_user }}\tALL=(ALL) NOPASSWD:ALL"
+      state: present
+    tags:
+      - config
+
+  - name: Install vim configuration
+    copy:
+      src: vim
+      dest: .vim
+      recurse: yes
+     tags:
+       - config
+
+  - name: Create .vimrc symlink
+    file:
+      src: vim/vimrc
+      dest: .vimrc
+    tags:
+      - config
+
+  - name: Install zsh configuration
+    template:
+      src: zshrc.j2
+      dest: .zshrc
+    tags:
+      - config
