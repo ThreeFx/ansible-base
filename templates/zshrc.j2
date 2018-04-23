@@ -1,0 +1,22 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory notify
+unsetopt autocd beep extendedglob nomatch
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/bfiedler/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+autoload -Uz promptinit
+promptinit
+
+alias ls='ls --color'
+alias lah='ls -lah'
+export PROMPT="%F{green}%n%f@%F{red}%m%f:%F{blue}%~%f
+% "
+export RPROMPT="%T"
