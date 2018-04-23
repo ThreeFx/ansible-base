@@ -1,65 +1,56 @@
 ---
-  - name: Add base signing keys
-    become: True
-    apt_key:
-      file: "keys/{{ item.key }}"
-      state: present
-    with_items: "{{ base_repositories }}"
+- name: Set the hostname of this system
+  become: True
+  hostname:
+    name: "{{ base_hostname }}"
 
-  - name: Add base repositories
-    become: True
-    apt_repository:
-      repo: "{{ item.repo }}"
-      state: present
-    with_items: "{{ base_repositories }}"
+- name: Add base signing keys
+  become: True
+  apt_key:
+    file: "keys/{{ item.key }}"
+    state: present
+  with_items: "{{ base_repositories + base_extra_repositories }}"
 
-  - name: Update packages and install base packages
-    become: True
-    apt:
-      pkg: "{{ item }}"
-      state: present
-      update_cache: yes
-    with_items: "{{ base_packages }}"
+- name: Add base repositories
+  become: True
+  apt_repository:
+    repo: "{{ item.repo }}"
+    state: present
+  with_items: "{{ base_repositories + base_extra_repositories}}"
 
-  - name: "Create the user '{{ base_user }}'"
-    become: True
-    user:
-      name: "{{ base_user }}"
-      createhome: yes
-      append: yes
-      groups:
-        - wheel
-      shell: "{{ base_user_shell }}"
-      generate_ssh_key: yes
-      ssh_key_bits: "{{ user_ssh_key_bits }}"
+- name: Update packages and install base packages
+  become: True
+  apt:
+    pkg: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ base_packages + base_extra_packages }}"
 
-  - name: Add the user to the sudoers file
-    remote_user: root
-    lineinfile:
-      path: /etc/sudoers
-      line: "{{ base_user }}\tALL=(ALL) NOPASSWD:ALL"
-      state: present
-    tags:
-      - config
+- name: "Create the user '{{ base_user.name }}'"
+  become: True
+  user:
+    name: "{{ base_user.name }}"
+    createhome: yes
+    home: "{{ home_dir }}"
+    # set the default shell for the user
+    shell: "{{ base_user.shell }}"
+    state: present
 
-  - name: Install vim configuration
-    copy:
-      src: vim
-      dest: .vim
-      recurse: yes
-     tags:
-       - config
+- name: "Generate an ssh key for {{ base_user.name }}"
+  become: True
+  user:
+    name: "{{ base_user.name }}"
+    generate_ssh_key: yes
+    # generate an ssh key and set it's passphrasee
+    ssh_key_bits: "{{ base_user.ssh_key_len }}"
+    ssh_key_comment: "{{ base_user.name }}@{{ ansible_hostname }} ({{ inventory_hostname }})"
+    ssh_key_passphrase: "{{ base_user.ssh_passphrase }}"
+    # only update the password on user creation
+    update_password: on_create
+    state: present
+  when: base_user.generate_ssh_key
 
-  - name: Create .vimrc symlink
-    file:
-      src: vim/vimrc
-      dest: .vimrc
-    tags:
-      - config
-
-  - name: Install zsh configuration
-    template:
-      src: zshrc.j2
-      dest: .zshrc
-    tags:
-      - config
+- name: Configure system
+  include_tasks: config.yml
+  tags:
+    - config

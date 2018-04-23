@@ -2,21 +2,12 @@
 ################################################################################
 # Packages/Repositories needed for a minimal (e.g. non-X) setup
 ################################################################################
-base_packages:
-  - ansible
-  - git
-  - gpg
-  - htop
-  - ssh
-  - sudo
-  - tmux
-  - vim
-  - wpasupplicant
-  - zsh
-
+base_extra_packages: []
 # Expects repositories as dict { repo, key } where repo refers to the
 # apt repository and key indicates the signing key for the packages
-base_repositories:       []
+base_extra_repositories: []
 
+# Per default, set the hostname to the inventory hostname
+base_hostname: "{{ inventory_hostname }}"
 # Set the user's group to his private group
-base_group: "{{ base_user }}"
+base_group: "{{ base_user.name }}"
