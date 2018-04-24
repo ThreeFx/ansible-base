@@ -6,6 +6,7 @@ base_packages:
   - gpg
   - htop
   - net-tools
+  - pulseaudio
   - python
   - python3
   - ssh
