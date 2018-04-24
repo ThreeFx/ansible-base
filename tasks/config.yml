@@ -1,4 +1,13 @@
 ---
+- name: Ensure necessary config directories exist
+  file:
+    path: "{{ home_dir }}/{{ item }}"
+    owner: "{{ base_user.name }}"
+    group: "{{ base_user.name }}"
+    state: directory
+  with_items:
+    - '.config'
+
 - name: Add the user to the sudoers file
   become: True
   lineinfile:

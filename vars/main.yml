@@ -1,6 +1,7 @@
 ---
 base_packages:
   - ansible
+  - cron
   - dnsutils
   - git
   - gpg
