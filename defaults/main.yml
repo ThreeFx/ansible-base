@@ -11,3 +11,5 @@ base_extra_repositories: []
 base_hostname: "{{ inventory_hostname }}"
 # Set the user's group to his private group
 base_group: "{{ base_user.name }}"
+
+base_scripts_dir: "{{ home_dir }}/.bin"
