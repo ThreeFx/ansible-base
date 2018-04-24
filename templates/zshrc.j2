@@ -18,6 +18,11 @@ promptinit
 alias ls='ls --color'
 alias lah='ls -lah'
 
+# Keyboard shortcuts for Ctrl+Backspace, etc.
+bindkey "\eOc" forward-word
+bindkey "\eOd" backward-word
+bindkey '^[[33~' backward-kill-word
+
 # TODO: Fix prompt
 PROMPT="%F{green}%n%f@%F{red}%m%f:%F{blue}%~%f
 % "
