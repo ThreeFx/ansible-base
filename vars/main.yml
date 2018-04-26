@@ -2,6 +2,7 @@
 base_packages:
   - ansible
   - cron
+  - curl
   - dnsutils
   - git
   - gpg
@@ -10,6 +11,7 @@ base_packages:
   - pulseaudio
   - python
   - python3
+  - rsync
   - ssh
   - sudo
   - tmux
