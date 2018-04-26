@@ -36,20 +36,6 @@
     shell: "{{ base_user.shell }}"
     state: present
 
-- name: "Generate an ssh key for {{ base_user.name }}"
-  become: True
-  user:
-    name: "{{ base_user.name }}"
-    generate_ssh_key: yes
-    # generate an ssh key and set it's passphrasee
-    ssh_key_bits: "{{ base_user.ssh_key_len }}"
-    ssh_key_comment: "{{ base_user.name }}@{{ ansible_hostname }} ({{ inventory_hostname }})"
-    ssh_key_passphrase: "{{ base_user.ssh_passphrase }}"
-    # only update the password on user creation
-    update_password: on_create
-    state: present
-  when: base_user.generate_ssh_key
-
 - name: Configure system
   include_tasks: config.yml
   tags:
