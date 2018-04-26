@@ -1,6 +1,7 @@
 ---
 base_packages:
   - ansible
+  - apt-transport-https
   - cron
   - curl
   - dnsutils
