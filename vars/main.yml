@@ -17,6 +17,7 @@ base_packages:
   - sudo
   - tmux
   - vim
+  - w3m
   - wpasupplicant
   - zsh
 
