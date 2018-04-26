@@ -3,8 +3,8 @@
 # Packages/Repositories needed for a minimal (e.g. non-X) setup
 ################################################################################
 base_extra_packages: []
-# Expects repositories as dict { repo, key } where repo refers to the
 # apt repository and key indicates the signing key for the packages
+base_extra_keys: []
 base_extra_repositories: []
 
 # Per default, set the hostname to the inventory hostname

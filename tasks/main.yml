@@ -7,16 +7,16 @@
 - name: Add base signing keys
   become: True
   apt_key:
-    file: "keys/{{ item.key }}"
+    file: "keys/{{ item }}"
     state: present
-  with_items: "{{ base_repositories + base_extra_repositories }}"
+  with_items: "{{ base_keys + base_extra_keys }}"
 
 - name: Add base repositories
   become: True
   apt_repository:
-    repo: "{{ item.repo }}"
+    repo: "{{ item }}"
     state: present
-  with_items: "{{ base_repositories + base_extra_repositories}}"
+  with_items: "{{ base_repositories + base_extra_repositories }}"
 
 - name: Update packages and install base packages
   become: True

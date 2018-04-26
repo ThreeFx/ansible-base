@@ -20,6 +20,7 @@ base_packages:
   - wpasupplicant
   - zsh
 
+base_keys: []
 base_repositories: []
 
 home_dir: "/home/{{ base_user.name }}"
