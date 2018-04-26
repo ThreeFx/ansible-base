@@ -9,16 +9,16 @@ base_packages:
   - gnupg
   - htop
   - net-tools
+  - openssh-client
   - pulseaudio
   - python
   - python3
   - rsync
-  - ssh
   - sudo
+  - tig
   - tmux
   - vim
   - w3m
-  - wpasupplicant
   - zsh
 
 base_keys: []
