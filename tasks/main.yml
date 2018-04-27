@@ -36,6 +36,12 @@
     shell: "{{ base_user.shell }}"
     state: present
 
+- name: "Set default editor to '{{ base_editor }}'"
+  become: True
+  shell: "update-alternatives --set editor {{ base_editor }}"
+  register: change_editor
+  changed_when: change_editor.stdout != ""
+
 - name: Configure system
   include_tasks: config.yml
   tags:

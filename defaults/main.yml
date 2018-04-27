@@ -9,6 +9,7 @@ base_extra_repositories: []
 
 # Per default, set the hostname to the inventory hostname
 base_hostname: "{{ inventory_hostname }}"
+base_editor: "/usr/bin/vim.basic"
 # Set the user's group to his private group
 base_group: "{{ base_user.name }}"
 
