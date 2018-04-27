@@ -21,6 +21,8 @@ base_packages:
   - vim
   - w3m
   - zsh
+  - zsh-doc
+  - zsh-syntax-highlighting
 
 base_keys: []
 base_repositories: []
