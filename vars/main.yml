@@ -17,6 +17,7 @@ base_packages:
   - sudo
   - tig
   - tmux
+  - tree
   - vim
   - w3m
   - zsh
