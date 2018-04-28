@@ -42,6 +42,11 @@
   register: change_editor
   changed_when: change_editor.stdout != ""
 
+- name: Create passwordless ssh key for cron usage
+  command: "ssh-keygen -t rsa -b 8192 -f {{ home_dir }}/.ssh/cron_rsa -N ''"
+  args:
+    creates: "{{ home_dir }}/.ssh/cron_rsa"
+
 - name: Configure system
   include_tasks: config.yml
   tags:
