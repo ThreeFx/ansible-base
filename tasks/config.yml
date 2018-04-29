@@ -21,8 +21,8 @@
 - name: Disable suspend on closing the lid
   become: True
   copy:
-    src: 10-disable-lid-suspend
-    dest: /etc/systemd/logind.conf.d/10-disable-lid-suspend
+    src: 10-disable-lid-suspend.conf
+    dest: /etc/systemd/logind.conf.d/10-disable-lid-suspend.conf
     owner: root
     group: root
     mode: 0644
