@@ -9,6 +9,7 @@ base_packages:
   - gnupg
   - htop
   - net-tools
+  - openconnect
   - openssh-client
   - pulseaudio
   - python
