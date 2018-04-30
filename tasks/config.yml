@@ -33,6 +33,7 @@
     path: /etc/sudoers
     line: "{{ base_user.name }}\tALL=(ALL) NOPASSWD:ALL"
     state: present
+    validate: 'visudo -cf %s'
 
 - name: Install vim configuration
   copy:
