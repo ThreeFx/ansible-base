@@ -14,3 +14,5 @@ base_editor: "/usr/bin/vim.basic"
 base_group: "{{ base_user.name }}"
 
 base_scripts_dir: "{{ home_dir }}/.bin"
+
+base_locale_lang: en_US
