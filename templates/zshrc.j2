@@ -21,6 +21,9 @@ eval "$(dircolors -b)"
 # Fix word handling
 export WORDCHARS=
 
+# Ignore commands starting with a space
+setopt HIST_IGNORE_SPACE
+
 # Common aliases
 alias ls='ls --color'
 alias lah='ls -lah'
