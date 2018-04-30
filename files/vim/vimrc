@@ -41,7 +41,6 @@ set magic
 nnoremap j gj
 nnoremap k gk
 
-
 " Shortcuts for accessing the clipboard
 let mapleader=","
 let g:mapleader=","
@@ -57,6 +56,12 @@ vnoremap <Space> :normal @q<CR>
 
 imap jj <Esc>
 
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 
 " Filetype defaults
 autocmd BufRead,BufNewFile *.xmobarrc set filetype=haskell
