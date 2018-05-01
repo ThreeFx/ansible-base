@@ -7,11 +7,15 @@ base_extra_packages: []
 base_extra_keys: []
 base_extra_repositories: []
 
+# Change this in the host_vars of your machine
+base_user:
+  name: "changeme"
+  shell: "/bin/bash"
+base_user_extra_groups: []
+
 # Per default, set the hostname to the inventory hostname
 base_hostname: "{{ inventory_hostname }}"
 base_editor: "/usr/bin/vim.basic"
-# Set the user's group to his private group
-base_group: "{{ base_user.name }}"
 
 base_scripts_dir: "{{ home_dir }}/.bin"
 

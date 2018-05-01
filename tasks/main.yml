@@ -36,6 +36,13 @@
     shell: "{{ base_user.shell }}"
     state: present
 
+- name: "Add user '{{ base_user.name }}' to necessary groups"
+  become: True
+  user:
+    name: "{{ base_user.name }}"
+    groups: "{{ base_user_extra_groups }}"
+    append: yes
+
 - name: "Set default editor to '{{ base_editor }}'"
   become: True
   shell: "update-alternatives --set editor {{ base_editor }}"
