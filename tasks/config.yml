@@ -7,6 +7,7 @@
     state: directory
   with_items:
     - '.config'
+    - '.config/systemd/user/'
 
 - name: Ensure necessary system config directories exist
   become: True
