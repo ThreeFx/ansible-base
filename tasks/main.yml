@@ -48,6 +48,7 @@
   shell: "update-alternatives --set editor {{ base_editor }}"
   register: change_editor
   changed_when: change_editor.stdout != ""
+  when: not x_editor is defined
 
 - name: Create passwordless ssh key for cron usage
   command: "ssh-keygen -t rsa -b 8192 -f {{ home_dir }}/.ssh/cron_rsa -N ''"
