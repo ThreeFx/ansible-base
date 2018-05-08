@@ -8,6 +8,7 @@ base_packages:
   - git
   - gnupg
   - htop
+  - netcat
   - net-tools
   - openconnect
   - openssh-client
@@ -17,6 +18,7 @@ base_packages:
   - rsync
   - scdaemon
   - sudo
+  - telnet
   - tig
   - tmux
   - tree
