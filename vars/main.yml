@@ -15,12 +15,14 @@ base_packages:
   - python
   - python3
   - rsync
+  - scdaemon
   - sudo
   - tig
   - tmux
   - tree
   - vim
   - w3m
+  - yubikey-personalization
   - zsh
   - zsh-doc
   - zsh-syntax-highlighting
