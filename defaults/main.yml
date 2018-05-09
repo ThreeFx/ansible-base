@@ -12,11 +12,12 @@ base_user:
   name: "changeme"
   shell: "/bin/bash"
 base_user_extra_groups: []
+base_home_dir: "/home/{{ base_user.name }}"
 
 # Per default, set the hostname to the inventory hostname
 base_hostname: "{{ inventory_hostname }}"
 base_editor: "/usr/bin/vim.basic"
 
-base_scripts_dir: "{{ home_dir }}/.bin"
+base_scripts_dir: "{{ base_home_dir }}/.bin"
 
 base_locale_lang: en_US

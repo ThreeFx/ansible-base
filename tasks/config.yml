@@ -1,7 +1,7 @@
 ---
 - name: Ensure necessary user config directories exist
   file:
-    path: "{{ home_dir }}/{{ item }}"
+    path: "{{ base_home_dir }}/{{ item }}"
     owner: "{{ base_user.name }}"
     group: "{{ base_user.name }}"
     state: directory
@@ -39,14 +39,14 @@
 - name: Install vim configuration
   copy:
     src: vim/
-    dest: "{{ home_dir }}/.vim"
+    dest: "{{ base_home_dir }}/.vim"
     owner: "{{ base_user.name }}"
     group: "{{ base_user.name }}"
 
 - name: Create .vimrc symlink
   file:
-    src: "{{ home_dir }}/.vim/vimrc"
-    dest: "{{ home_dir }}/.vimrc"
+    src: "{{ base_home_dir }}/.vim/vimrc"
+    dest: "{{ base_home_dir }}/.vimrc"
     owner: "{{ base_user.name }}"
     group: "{{ base_user.name }}"
     state: link
@@ -54,6 +54,6 @@
 - name: Install zsh configuration
   template:
     src: zshrc.j2
-    dest: "{{ home_dir }}/.zshrc"
+    dest: "{{ base_home_dir }}/.zshrc"
     owner: "{{ base_user.name }}"
     group: "{{ base_user.name }}"

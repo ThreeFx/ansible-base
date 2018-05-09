@@ -31,7 +31,7 @@
   user:
     name: "{{ base_user.name }}"
     createhome: yes
-    home: "{{ home_dir }}"
+    home: "{{ base_home_dir }}"
     # set the default shell for the user
     shell: "{{ base_user.shell }}"
     state: present
@@ -51,9 +51,9 @@
   when: not x_editor is defined
 
 - name: Create passwordless ssh key for cron usage
-  command: "ssh-keygen -t rsa -b 8192 -f {{ home_dir }}/.ssh/cron_rsa -N ''"
+  command: "ssh-keygen -t rsa -b 8192 -f {{ base_home_dir }}/.ssh/cron_rsa -N ''"
   args:
-    creates: "{{ home_dir }}/.ssh/cron_rsa"
+    creates: "{{ base_home_dir }}/.ssh/cron_rsa"
 
 - name: Configure system
   include_tasks: config.yml
