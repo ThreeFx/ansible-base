@@ -21,6 +21,7 @@ base_packages:
   - telnet
   - tig
   - tmux
+  - traceroute
   - tree
   - vim
   - w3m
