@@ -49,6 +49,8 @@ precmd() {
     vcs_info
 }
 
+export GOPATH="$HOME/.go"
+
 PROMPT=$'%B%F{green}%n%f%b@%B%F{red}%m%f%b:%B%F{blue}%~%f%b %B${vcs_info_msg_0_}%b$prompt_newline%# '
 RPROMPT="%T"
 
