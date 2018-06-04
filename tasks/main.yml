@@ -36,6 +36,15 @@
     shell: "{{ base_user.shell }}"
     state: present
 
+- name: Create the additional groups if nonexistent
+  become: True
+  group:
+    name: "{{ item }}"
+    system: yes
+    state: present
+  with_items:
+    - "{{ base_user_extra_groups }}"
+
 - name: "Add user '{{ base_user.name }}' to necessary groups"
   become: True
   user:
