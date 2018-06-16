@@ -19,6 +19,13 @@
   with_items:
     - '/etc/systemd/logind.conf.d/'
 
+- name: "Set timezone to {{ base_timezone }}"
+  become: True
+  command: "timedatectl set-timezone {{ base_timezone }}"
+  when: item != base_timezone
+  with_file:
+    - "/etc/timezone"
+
 - name: Disable suspend on closing the lid
   become: True
   copy:
