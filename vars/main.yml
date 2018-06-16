@@ -26,7 +26,6 @@ base_packages:
   - tree
   - vim
   - w3m
-  - yubikey-personalization
   - zsh
   - zsh-doc
   - zsh-syntax-highlighting
