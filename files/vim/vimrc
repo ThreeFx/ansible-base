@@ -80,6 +80,7 @@ let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
 
 let g:go_fmt_command = "goimports"
+let g:go_list_type = "locationlist"
 
 map <Leader>n :NERDTreeToggle<CR>
 
@@ -101,4 +102,10 @@ endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 set dictionary="/usr/share/dict/american-english"
 
-"execute pathogen#infect()
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+call SetupCommandAlias("gob","w<CR>:GoBuild")
+call SetupCommandAlias("got","w<CR>:GoTest")
