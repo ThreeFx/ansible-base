@@ -58,6 +58,13 @@
     group: "{{ base_user.name }}"
     state: link
 
+- name: Install tmux config
+  template:
+    src: tmux.conf.j2
+    dest: "{{ base_home_dir }}/.tmux.conf"
+    owner: "{{ base_user.name }}"
+    group: "{{ base_user.name }}"
+
 - name: Install zsh configuration
   template:
     src: zshrc.j2

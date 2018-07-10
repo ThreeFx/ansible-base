@@ -33,7 +33,10 @@ alias grep='grep --color'
 # Keyboard shortcuts for Ctrl+Backspace, etc.
 bindkey "\eOc" forward-word
 bindkey "\eOd" backward-word
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D"  backward-word
 bindkey '^[[33~' backward-kill-word
+bindkey "\e[7;5~" backward-kill-word
 
 # For VCS suport
 setopt prompt_subst
@@ -50,6 +53,7 @@ precmd() {
 }
 
 export GOPATH="$HOME/.go"
+export PATH="$HOME/.go/bin:$PATH"
 
 PROMPT=$'%B%F{green}%n%f%b@%B%F{red}%m%f%b:%B%F{blue}%~%f%b %B${vcs_info_msg_0_}%b$prompt_newline%# '
 RPROMPT="%T"

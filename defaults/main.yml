@@ -14,6 +14,8 @@ base_user:
 base_user_extra_groups: []
 base_home_dir: "/home/{{ base_user.name }}"
 
+base_tmux_mouse: false
+
 # Per default, set the hostname to the inventory hostname
 base_hostname: "{{ inventory_hostname }}"
 base_editor: "/usr/bin/vim.basic"

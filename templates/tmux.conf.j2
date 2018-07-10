@@ -1,0 +1,58 @@
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+set -sg escape-time 0
+set -g xterm-keys on
+
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind '%'
+
+unbind r
+bind r source-file ~/.tmux.conf
+
+bind -n M-Left select-pane -L
+bind -n M-h select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-l select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-k select-pane -U
+bind -n M-Down select-pane -D
+bind -n M-j select-pane -D
+
+{% if base_tmux_mouse %}
+bind m \
+  set -g mouse on \;\
+  display 'Mouse: ON'
+
+bind M \
+  set -g mouse off \;\
+  display 'Mouse: OFF'
+{% endif %}
+
+set-option -g allow-rename off
+
+#bind -n M-0 select-window 0
+#bind -n M-1 select-window 1
+#bind -n M-2 select-window 2
+#bind -n M-3 select-window 3
+#bind -n M-4 select-window 4
+#bind -n M-5 select-window 5
+#bind -n M-6 select-window 6
+#bind -n M-7 select-window 7
+#bind -n M-8 select-window 8
+#bind -n M-9 select-window 9
+
+######################
+### DESIGN CHANGES ###
+######################
+
+# loud or quiet?
+set-option -g visual-activity off
+set-option -g visual-bell off
+set-option -g visual-silence off
+set-window-option -g monitor-activity off
+set-option -g bell-action none
