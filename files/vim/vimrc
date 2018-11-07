@@ -71,6 +71,7 @@ autocmd BufRead,BufNewFile *.x set ft=alex
 autocmd BufRead,BufNewFile *sxhkdrc set noexpandtab
 autocmd BufRead,BufNewFile *.yml setlocal ts=2 sw=2
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.txt setlocal textwidth=80
 
 highlight ExtraWhitespace ctermbg=001
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t$/
