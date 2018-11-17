@@ -15,7 +15,7 @@ base_tmux_mouse: false
 
 # Per default, set the hostname to the inventory hostname
 base_hostname: "{{ inventory_hostname }}"
-base_editor: "/usr/bin/vim.basic"
+base_editor: "/usr/bin/vim.nox"
 
 base_scripts_dir: "{{ base_home_dir }}/.bin"
 
