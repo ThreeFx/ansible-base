@@ -1,14 +1,4 @@
 ---
-- name: Ensure necessary user config directories exist
-  file:
-    path: "{{ base_home_dir }}/{{ item }}"
-    owner: "{{ base_user.name }}"
-    group: "{{ base_user.name }}"
-    state: directory
-  with_items:
-    - '.config'
-    - '.config/systemd/user/'
-
 - name: "Set timezone to {{ base_timezone }}"
   become: True
   command: "timedatectl set-timezone {{ base_timezone }}"
