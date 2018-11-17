@@ -1,34 +1,24 @@
 ---
 base_packages:
-  - ansible
-  - apt-transport-https
-  - cron
+# Base stuff
+  - coreutils
   - curl
-  - dnsutils
-  - git
-  - gnupg
-  - graphviz
-  - htop
-  - netcat
-  - net-tools
-  - openconnect
-  - openssh-client
-  - pulseaudio
-  - python
-  - python3
-  - rsync
-  - scdaemon
   - sudo
-  - telnet
-  - tig
   - tmux
   - traceroute
   - tree
   - vim
-  - w3m
   - zsh
-  - zsh-doc
   - zsh-syntax-highlighting
 
-base_keys: []
-base_repositories: []
+# Monitoring stuff
+  - atop
+  - dnsutils
+  - htop
+  - iftop
+  - iotop
+  - iproute2
+  - lshw
+  - lsof
+  - nmon
+  - telnet
