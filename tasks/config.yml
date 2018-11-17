@@ -9,31 +9,12 @@
     - '.config'
     - '.config/systemd/user/'
 
-- name: Ensure necessary system config directories exist
-  become: True
-  file:
-    path: "{{ item }}"
-    owner: root
-    group: root
-    state: directory
-  with_items:
-    - '/etc/systemd/logind.conf.d/'
-
 - name: "Set timezone to {{ base_timezone }}"
   become: True
   command: "timedatectl set-timezone {{ base_timezone }}"
   when: item != base_timezone
   with_file:
     - "/etc/timezone"
-
-- name: Disable suspend on closing the lid
-  become: True
-  copy:
-    src: 10-disable-lid-suspend.conf
-    dest: /etc/systemd/logind.conf.d/10-disable-lid-suspend.conf
-    owner: root
-    group: root
-    mode: 0644
 
 - name: Add the user to the sudoers file
   become: True
@@ -57,13 +38,6 @@
     owner: "{{ base_user.name }}"
     group: "{{ base_user.name }}"
     state: link
-
-- name: Install tmux config
-  template:
-    src: tmux.conf.j2
-    dest: "{{ base_home_dir }}/.tmux.conf"
-    owner: "{{ base_user.name }}"
-    group: "{{ base_user.name }}"
 
 - name: Install zsh configuration
   template:

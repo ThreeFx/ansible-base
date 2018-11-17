@@ -4,20 +4,6 @@
   hostname:
     name: "{{ base_hostname }}"
 
-- name: Add base signing keys
-  become: True
-  apt_key:
-    file: "keys/{{ item }}"
-    state: present
-  with_items: "{{ base_keys + base_extra_keys }}"
-
-- name: Add base repositories
-  become: True
-  apt_repository:
-    repo: "{{ item }}"
-    state: present
-  with_items: "{{ base_repositories + base_extra_repositories }}"
-
 - name: Update packages and install base packages
   become: True
   apt:
@@ -57,7 +43,6 @@
   shell: "update-alternatives --set editor {{ base_editor }}"
   register: change_editor
   changed_when: change_editor.stdout != ""
-  when: not x_editor is defined
 
 - name: Configure system
   include_tasks: config.yml

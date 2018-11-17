@@ -1,11 +1,8 @@
 ---
 ################################################################################
-# Packages/Repositories needed for a minimal (e.g. non-X) setup
+# Packages/Repositories needed for a server setup
 ################################################################################
 base_extra_packages: []
-# apt repository and key indicates the signing key for the packages
-base_extra_keys: []
-base_extra_repositories: []
 
 # Change this in the host_vars of your machine
 base_user:
