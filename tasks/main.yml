@@ -1,9 +1,4 @@
 ---
-- name: Set the hostname of this system
-  become: True
-  hostname:
-    name: "{{ base_hostname }}"
-
 - name: Update packages and install base packages
   become: True
   apt:
