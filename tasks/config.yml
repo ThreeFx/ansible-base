@@ -10,7 +10,7 @@
   become: True
   lineinfile:
     path: /etc/sudoers
-    line: "{{ base_user.name }}\tALL=(ALL) NOPASSWD:ALL"
+    line: "{{ base_user_name }}\tALL=(ALL) NOPASSWD:ALL"
     state: present
     validate: 'visudo -cf %s'
 
@@ -18,20 +18,20 @@
   copy:
     src: vim/
     dest: "{{ base_home_dir }}/.vim"
-    owner: "{{ base_user.name }}"
-    group: "{{ base_user.name }}"
+    owner: "{{ base_user_name }}"
+    group: "{{ base_user_name }}"
 
 - name: Create .vimrc symlink
   file:
     src: "{{ base_home_dir }}/.vim/vimrc"
     dest: "{{ base_home_dir }}/.vimrc"
-    owner: "{{ base_user.name }}"
-    group: "{{ base_user.name }}"
+    owner: "{{ base_user_name }}"
+    group: "{{ base_user_name }}"
     state: link
 
 - name: Install zsh configuration
   template:
     src: zshrc.j2
     dest: "{{ base_home_dir }}/.zshrc"
-    owner: "{{ base_user.name }}"
-    group: "{{ base_user.name }}"
+    owner: "{{ base_user_name }}"
+    group: "{{ base_user_name }}"

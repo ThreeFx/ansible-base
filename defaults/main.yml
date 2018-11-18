@@ -6,7 +6,7 @@ base_extra_packages: []
 
 # Change this in the host_vars of your machine
 base_user_name: changeme
-base_user_shell: /bin/bash
+base_shell: /bin/bash
 
 base_user_extra_groups: []
 base_home_dir: "/home/{{ base_user_name }}"

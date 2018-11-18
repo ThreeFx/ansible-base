@@ -13,7 +13,7 @@
     name: "{{ base_user_name }}"
     createhome: yes
     home: "{{ base_home_dir }}"
-    shell: "{{ base_user_shell }}"
+    shell: "{{ base_shell }}"
     state: present
 
 - name: Create the additional groups if nonexistent
