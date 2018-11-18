@@ -8,6 +8,7 @@ base_extra_packages: []
 base_user:
   name: "changeme"
   shell: "/bin/bash"
+
 base_user_extra_groups: []
 base_home_dir: "/home/{{ base_user.name }}"
 
