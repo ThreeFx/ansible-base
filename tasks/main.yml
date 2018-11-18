@@ -7,14 +7,13 @@
     update_cache: yes
   with_items: "{{ base_packages + base_extra_packages }}"
 
-- name: "Create the user '{{ base_user.name }}'"
+- name: "Create the user '{{ base_user_name }}'"
   become: True
   user:
-    name: "{{ base_user.name }}"
+    name: "{{ base_user_name }}"
     createhome: yes
     home: "{{ base_home_dir }}"
-    # set the default shell for the user
-    shell: "{{ base_user.shell }}"
+    shell: "{{ base_user_shell }}"
     state: present
 
 - name: Create the additional groups if nonexistent
@@ -26,10 +25,10 @@
   with_items:
     - "{{ base_user_extra_groups }}"
 
-- name: "Add user '{{ base_user.name }}' to necessary groups"
+- name: "Add user '{{ base_user_name }}' to necessary groups"
   become: True
   user:
-    name: "{{ base_user.name }}"
+    name: "{{ base_user_name }}"
     groups: "{{ base_user_extra_groups }}"
     append: yes
 

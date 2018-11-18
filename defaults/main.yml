@@ -5,20 +5,13 @@
 base_extra_packages: []
 
 # Change this in the host_vars of your machine
-base_user:
-  name: "changeme"
-  shell: "/bin/bash"
+base_user_name: changeme
+base_user_shell: /bin/bash
 
 base_user_extra_groups: []
-base_home_dir: "/home/{{ base_user.name }}"
+base_home_dir: "/home/{{ base_user_name }}"
 
 base_zsh_host_color: red
 
-# Per default, set the hostname to the inventory hostname
-base_hostname: "{{ inventory_hostname }}"
-base_editor: "/usr/bin/vim.nox"
-
-base_scripts_dir: "{{ base_home_dir }}/.bin"
-
-base_locale_lang: en_US
+base_editor: /usr/bin/vim.nox
 base_timezone: 'Europe/Zurich'
