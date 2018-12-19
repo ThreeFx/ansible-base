@@ -60,3 +60,8 @@ RPROMPT="%T"
 
 # Use zsh-syntax-highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Enable kubectl autocompletion
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
