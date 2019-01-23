@@ -30,6 +30,9 @@ alias ls='ls --color'
 alias lah='ls -lah'
 alias grep='grep --color'
 
+# For switching yubikeys
+alias switch='gpg-connect-agent "scd serialno" "learn --force" /bye'
+
 # Keyboard shortcuts for Ctrl+Backspace, etc.
 bindkey "\eOc" forward-word
 bindkey "\eOd" backward-word
